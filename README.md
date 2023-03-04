@@ -47,10 +47,18 @@ pip3 install greenlet==1.1.2
 ## Executing the system
 
 ### Via Command Line
-To communicate with <span style="color:#4E2A84">**CH3FB0T**</span> via the command line, simply run the following command in the root directory.
+To communicate with <span style="color:#4E2A84">**CH3FB0T**</span> via the command line, simply run the following commands in the root directory.
+
+* First, train the model.
 
 ```
-rasa shell
+rasa train
+```
+
+* Next, start the actions server (to communicate with recipe-parsing backend) and run the chatbot in shell!
+
+```
+rasa run actions & rasa shell
 ```
 
 ### Via Local Slack Channel
@@ -66,6 +74,12 @@ slack:
  slack_token: "<your slack token>"
  slack_channel: "<the slack channel>"
  slack_signing_secret: "<your slack signing secret>"
+```
+
+* Next, train the model if you haven't already.
+
+```
+rasa train
 ```
 
 * Rasa communicates using your local 5005 port. To make this port publicly available on the internet, you can use ngrok. More information: [Rasa Docs](https://rasa.com/docs/rasa/messaging-and-voice-channels#testing-channels-on-your-local-machine).
