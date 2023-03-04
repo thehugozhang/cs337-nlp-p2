@@ -10,13 +10,22 @@ This project is a contexual assistant chatbot that can interpret any online reci
 
 ### Dependencies
 
+Built and tested on Python v3.9.12 and pip v23.01.
+
 This system depends on the following third-party modules.
+* [Rasa](https://rasa.com/docs/rasa/installation/installing-rasa-open-source)
 * [Recipe Scrapers](https://pypi.org/project/recipe-scrapers/)
 * [Ingredient Parser (Zestful Client)](https://pypi.org/project/zestful-parse-ingredient/)
 
 ### Installing
 
 Specific installation instructions can be found below.
+
+* To install Rasa:
+```
+pip install rasa
+```
+
 * To install Recipe Scrapers:
 ```
 pip install recipe-scrapers
