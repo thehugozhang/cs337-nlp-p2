@@ -58,6 +58,16 @@ A Slack workspace and custom app have been setup to provide an easy interface to
 
 To communicate with CH3FB0T via Slack, run the following commands in the root directory.
 
+* First, you must replace the empty values with the required Slack App tokens for CH3FB0T in `credentials.yml`. For the course instructor/TAs of 337, these values will be provided. For anyone else viewing this repository, you can create your own workspace to generate your own unique values.
+
+```
+# Replace these values!
+slack:
+ slack_token: "<your slack token>"
+ slack_channel: "<the slack channel>"
+ slack_signing_secret: "<your slack signing secret>"
+```
+
 * Rasa communicates using the 5005 port. To make this port publicly available on the internet, you can use ngrok. More information: [Rasa Docs](https://rasa.com/docs/rasa/messaging-and-voice-channels#testing-channels-on-your-local-machine).
 ```
 ngrok http 5005
@@ -68,7 +78,7 @@ rasa run
 ```
 * Voila! Open the Slack workspace and invite CH3FB0T to start chatting.
 
-### Execution notes:
+### Execution notes
 * In order to communicate with CH3FB0T over Slack, the ngrok tunnel must be set as the Slack app's Request URL per the [Rasa Docs](https://rasa.com/docs/rasa/connectors/slack).
 
 * If using a virtual environment, make sure to enable it first (prior to the above steps) using:
