@@ -9,6 +9,18 @@ intents:
   - mood_unhappy
   - bot_challenge
 
+entities:
+  - recipe_name
+  - recipe_steps
+  - recipe_current_step
+
+actions:
+  - action_parse_recipe
+  - action_previous_step
+  - action_next_step
+  - action_nth_step
+  - action_repeat_step
+
 responses:
   utter_greet:
   - text: "Hey! How are you?"
