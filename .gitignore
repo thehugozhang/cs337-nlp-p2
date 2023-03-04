@@ -1,5 +1,8 @@
 .DS_Store
 
+# Prevent further pushing of updated tokens.
+credentials.yml
+
 # Rasa cache
 /.rasa
 

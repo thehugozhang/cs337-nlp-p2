@@ -53,7 +53,7 @@ To communicate with CH3FB0T via the command line, simply run the following comma
 rasa shell
 ```
 
-### Via Slack Channel
+### Via Local Slack Channel
 A Slack workspace and custom app have been setup to provide an easy interface to communicate with CH3FB0T.
 
 To communicate with CH3FB0T via Slack, run the following commands in the root directory.
@@ -68,7 +68,8 @@ slack:
  slack_signing_secret: "<your slack signing secret>"
 ```
 
-* Rasa communicates using the 5005 port. To make this port publicly available on the internet, you can use ngrok. More information: [Rasa Docs](https://rasa.com/docs/rasa/messaging-and-voice-channels#testing-channels-on-your-local-machine).
+* Rasa communicates using your local 5005 port. To make this port publicly available on the internet, you can use ngrok. More information: [Rasa Docs](https://rasa.com/docs/rasa/messaging-and-voice-channels#testing-channels-on-your-local-machine).
+    * After creating a tunnel using the command below, make sure to replace the Request URL in Event Subscriptions on Slack's Your Apps section with the ngrok.io Forwarding URL, followed by the path ending `/webhooks/slack/webhook`.
 ```
 ngrok http 5005
 ```
