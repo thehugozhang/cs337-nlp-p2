@@ -8,11 +8,35 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - recipe_search
 
 entities:
+  - recipe_url
   - recipe_name
   - recipe_steps
   - recipe_current_step
+
+slots:
+  recipe_url:
+    type: text
+    mappings:
+    - type: custom
+      action: action_unknown_url
+  recipe_name:
+    type: text
+    mappings:
+    - type: custom
+      action: action_unknown_name
+  recipe_steps:
+    type: float
+    initial_value: 0
+    mappings:
+    - type: custom
+  recipe_current_step:
+    type: float
+    mappings:
+    - type: custom
+      action: action_unknown_steps
 
 actions:
   - action_parse_recipe
@@ -23,7 +47,10 @@ actions:
 
 responses:
   utter_greet:
-  - text: "Hey! How are you?"
+  - text: "Hi! I am CH3FB0T, your virtual sous-chef. Give me a recipe to get started."
+  - text: "Hey there, my name is CH3FB0T, your virtual cooking assistant. Do you have a recipe link?"
+  - text: "Hello, I'm CH3FB0T, a virtual cooking chat assistant. Send me your recipe link and let's get cooking!"
+  - text: "Hey! My name is CH3FB0T, your personal kitchen assistant. Please provide a recipe URL to get started."
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"

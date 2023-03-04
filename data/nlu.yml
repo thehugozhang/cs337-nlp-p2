@@ -49,6 +49,21 @@ nlu:
     - no way
     - not really
 
+- intent: recipe_search
+  examples: |
+    - I want to cook this recipe [https://www.foodnetwork.com/recipes/ina-garten/mustard-roasted-fish-recipe-1946228](recipe_url)
+    - I am interested in making this dish [https://www.foodnetwork.com/recipes/food-network-kitchen/mushroom-stroganoff-3364088](recipe_url)
+    - Help me cook this please [https://www.foodnetwork.com/recipes/food-network-kitchen/pork-belly-adobo-3362407](recipe_url)
+    - Here's the recipe: [https://cookpad.com/us/recipes/16835678-pecan-pear-crumble-with-candied-ginger-microwave-5-mins?ref=guest_feed](recipe_url)
+    - This is the recipe url: [https://www.foodnetwork.com/recipes/udon-with-chicken-and-scallions-tori-nanba-udon-recipe-2047867](recipe_url)
+    - recipe url: [https://www.foodnetwork.com/recipes/food-network-kitchen/nut-meat-tacos-with-pickled-red-onions-3364895](recipe_url)
+    - recipe [https://www.allrecipes.com/recipe/255021/creamy-bay-scallop-spaghetti/](recipe_url)
+    - [https://www.foodnetwork.com/recipes/food-network-kitchen/west-african-goat-meat-stew-13023380](recipe_url)
+    - [https://tasty.co/recipe/poached-eggs-in-tomato-sauce-shakshouka](recipe_url)
+    - [https://tastykitchen.com/recipes/soups/chorizo-lentil-stew/](recipe_url)
+    - [https://www.allrecipes.com/recipe/16468/tuna-fish-salad/](recipe_url)
+    - [https://www.baking-sense.com/2017/09/14/white-cake/](recipe_url)
+
 - intent: mood_great
   examples: |
     - perfect

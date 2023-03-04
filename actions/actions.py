@@ -16,7 +16,20 @@ class ActionParseRecipe(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Great! Please provide a recipe URL to get started.")
+        dispatcher.utter_message(text="Implement recipe parsing here.")
+
+        return []
+    
+class ActionUnknownURL(Action):
+
+    def name(self) -> Text:
+        return "action_unknown_url"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Hmm, I am unfamiliar with that recipe schema. Do you have an alternative recipe from a different source?")
 
         return []
 
