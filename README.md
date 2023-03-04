@@ -10,7 +10,7 @@ This project is a contexual assistant chatbot that can interpret any online reci
 
 ### Dependencies
 
-Built and tested on Python v3.9.12 and pip v23.01.
+Built and tested on Python v3.9.12 and pip v23.0.1.
 
 This system depends on the following third-party modules.
 * [Rasa](https://rasa.com/docs/rasa/installation/installing-rasa-open-source)
@@ -21,19 +21,27 @@ This system depends on the following third-party modules.
 
 Specific installation instructions can be found below.
 
-* To install Rasa:
+* To install Rasa. *Note: Rasa only supports Python versions 3.7, 3.8, 3.9, and 3.10.*
 ```
-pip install rasa
+pip3 install rasa
 ```
 
 * To install Recipe Scrapers:
 ```
-pip install recipe-scrapers
+pip3 install recipe-scrapers
 ```
 
 * To install Ingredient Parser (Zestful Client):
 ```
-pip install zestful-parse-ingredient
+pip3 install zestful-parse-ingredient
+```
+### Installation debugging
+
+In certain situations, some Rasa dependencies may need to be individually installed. For more information, see this [git issue](https://github.com/OpenZeppelin/nile/issues/105).
+
+* To install Greenlet:
+```
+pip3 install greenlet==1.1.2
 ```
 
 ### Executing the system
