@@ -1,10 +1,10 @@
-# Virtual Cooking Contextual Assistant Chatbot (cs337-nlp-p2)
+# CH3FB0T - Virtual Cooking Contextual Assistant Chatbot (cs337-nlp-p2)
 
 Developed for COMP_SCI 337 Natural Language Processing at [Northwestern University](https://www.northwestern.edu/).
 
 ## Description
 
-This project is a contexual assistant chatbot that can interpret any online recipe URL and promptly respond to queries about it.
+Meet CH3FB0T! This project is a contexual assistant chatbot that can interpret any online recipe URL and promptly respond to queries about it.
 
 ## Getting Started
 
@@ -44,7 +44,37 @@ In certain situations, some Rasa dependencies may need to be individually instal
 pip3 install greenlet==1.1.2
 ```
 
-### Executing the system
+## Executing the system
+
+### Via Command Line
+To communicate with CH3FB0T via the command line, simply run the following command in the root directory.
+
+```
+rasa shell
+```
+
+### Via Slack Channel
+A Slack workspace and custom app have been setup to provide an easy interface to communicate with CH3FB0T.
+
+To communicate with CH3FB0T via Slack, run the following commands in the root directory.
+
+* Rasa communicates using the 5005 port. To make this port publicly available on the internet, you can use ngrok. More information: [Rasa Docs](https://rasa.com/docs/rasa/messaging-and-voice-channels#testing-channels-on-your-local-machine).
+```
+ngrok http 5005
+```
+* Next, run the following command to start CH3FB0T.
+```
+rasa run
+```
+* Voila! Open the Slack workspace and invite CH3FB0T to start chatting.
+
+### Execution notes:
+* In order to communicate with CH3FB0T over Slack, the ngrok tunnel must be set as the Slack app's Request URL per the [Rasa Docs](https://rasa.com/docs/rasa/connectors/slack).
+
+* If using a virtual environment, make sure to enable it first (prior to the above steps) using:
+```
+source ./venv/bin/activate
+```
 
 ## Help
 
