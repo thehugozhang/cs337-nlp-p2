@@ -177,18 +177,18 @@ class ActionNthStep(Action):
         recipe_current_step = tracker.get_slot('recipe_current_step')
         nth_utterance = tracker.get_slot('nth_utterance')
 
-        # Additional step count for display purposes (versus internal indexing).
-        nth_index = alnum_parse_ordinal(nth_utterance) - 1
-        recipe_current_step_display = nth_index + 1
-
         try:
-            dispatcher.utter_message(text="Here is the {} step of the recipe:\n\nStep {}. {}".format(nth_utterance, recipe_current_step_display, recipe_steps_list[nth_index]))
-        except IndexError:
-            dispatcher.utter_message(text="The {} step doesn't exist in the recipe! There are only {} total steps to choose from.".format(nth_utterance, recipe_steps))
+            # Additional step count for display purposes (versus internal indexing).
+            nth_index = alnum_parse_ordinal(nth_utterance) - 1
+            recipe_current_step_display = nth_index + 1
+
+            try:
+                dispatcher.utter_message(text="Here is the {} step of the recipe:\n\nStep {}. {}".format(nth_utterance, recipe_current_step_display, recipe_steps_list[nth_index]))
+                return [SlotSet("recipe_current_step", nth_index)]
+            except IndexError:
+                dispatcher.utter_message(text="The {} step doesn't exist in the recipe! There are only {} total steps to choose from.".format(nth_utterance, recipe_steps))
         except:
             dispatcher.utter_message(text="Hmmm, I am unable to retrieve that step. Perhaps try navigating the steps one-by-one or pick a different step number.")
-
-        return []
 
 class ActionRepeatStep(Action):
 
@@ -199,6 +199,17 @@ class ActionRepeatStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Implement repeat step here.")
+        # Retrieve values from slots.
+        recipe_steps_list = tracker.get_slot('recipe_steps_list')
+        recipe_current_step = tracker.get_slot('recipe_current_step')
 
+        # Additional step count for display purposes (versus internal indexing).
+        recipe_current_step_display = recipe_current_step + 1
+
+        dispatcher.utter_message(text="Of course! Here is the same step of the recipe again:\n\nStep {}. {}".format(recipe_current_step_display, recipe_steps_list[recipe_current_step]))
+        
         return []
+
+###############################################################
+# Specific how-to utterances.
+###############################################################
