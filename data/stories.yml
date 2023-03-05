@@ -10,3 +10,4 @@ stories:
   - action: action_parse_recipe
   - slot_was_set:
     - recipe_steps_list: ["example list of steps"]
+    - recipe_ingredients_list: ["example list of ingredients"]

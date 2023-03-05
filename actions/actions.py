@@ -81,10 +81,16 @@ class ActionRetrieveIngredients(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        # Retrieve ingredients from slots.
+        # Retrieve values from slots.
+        recipe_name = tracker.get_slot('recipe_name')
         recipe_ingredients_list = tracker.get_slot('recipe_ingredients_list')
 
-        dispatcher.utter_message(text="Implement retrieve ingredients here.")
+        ingredients_text = "Here are all the ingredients you will need to make {}:\n\n".format(recipe_name)
+        for index, ingredient in enumerate(recipe_ingredients_list):
+            ingredients_text += (str(index + 1)) + ". " + ingredient + "\n"
+        ingredients_text += "\nAs you are cooking, I can remind you of the quantities and other preparation notes for any specific ingredient. Don't hesitate to ask!"
+
+        dispatcher.utter_message(text=ingredients_text)
 
         return []
 
