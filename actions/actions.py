@@ -107,9 +107,28 @@ class ActionNextStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Implement next step here.")
+        # Retrieve values from slots.
+        recipe_steps = tracker.get_slot('recipe_steps')
+        recipe_steps_list = tracker.get_slot('recipe_steps_list')
+        recipe_current_step = tracker.get_slot('recipe_current_step')
+        # Additional step count for display purposes (versus internal indexing).
+        recipe_current_step_display = recipe_current_step + 1
 
-        return []
+        # Increment next step(s).
+        recipe_current_step = recipe_current_step + 1
+        recipe_current_step_display = recipe_current_step_display + 1
+
+        if recipe_current_step == recipe_steps:
+            dispatcher.utter_message(text="You've already reached the end of the recipe! There are no other steps, except to enjoy your meal :D")
+            # Reverse increment.
+            recipe_current_step = recipe_current_step - 1
+            recipe_current_step_display = recipe_current_step_display - 1
+        elif recipe_current_step == recipe_steps - 1:
+            dispatcher.utter_message(text="Here is the last step of the recipe:\n\nStep {}. {}".format(recipe_current_step_display, recipe_steps_list[recipe_current_step]))
+        else:
+            dispatcher.utter_message(text="Here is the next step of the recipe:\n\nStep {}. {}".format(recipe_current_step_display, recipe_steps_list[recipe_current_step]))
+        
+        return [SlotSet("recipe_current_step", recipe_current_step)]
 
 class ActionPreviousStep(Action):
 
@@ -120,9 +139,28 @@ class ActionPreviousStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Implement previous step here.")
+        # Retrieve values from slots.
+        recipe_steps = tracker.get_slot('recipe_steps')
+        recipe_steps_list = tracker.get_slot('recipe_steps_list')
+        recipe_current_step = tracker.get_slot('recipe_current_step')
+        # Additional step count for display purposes (versus internal indexing).
+        recipe_current_step_display = recipe_current_step + 1
 
-        return []
+        # Increment next step(s).
+        recipe_current_step = recipe_current_step - 1
+        recipe_current_step_display = recipe_current_step_display - 1
+
+        if recipe_current_step == -1:
+            dispatcher.utter_message(text="You are at the start of the recipe. Ask about the next step to start cooking!")
+            # Reverse decrement.
+            recipe_current_step = recipe_current_step + 1
+            recipe_current_step_display = recipe_current_step_display + 1
+        elif recipe_current_step == 0:
+            dispatcher.utter_message(text="Here is the first step of the recipe:\n\nStep {}. {}".format(recipe_current_step_display, recipe_steps_list[recipe_current_step]))
+        else:
+            dispatcher.utter_message(text="Here is the previous step of the recipe:\n\nStep {}. {}".format(recipe_current_step_display, recipe_steps_list[recipe_current_step]))
+        
+        return [SlotSet("recipe_current_step", recipe_current_step)]
 
 class ActionNthStep(Action):
 
