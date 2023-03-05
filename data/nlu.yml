@@ -161,10 +161,10 @@ nlu:
     - go to the [tenth](nth_utterance) instruction
     - go to the [eleventh](nth_utterance) instruction
     - go to the [twelfth](nth_utterance) instruction
-    - can you bring me to step number [2](nth utterance)
-    - go to step number [3](nth utterance)
-    - take me to step [4](nth utterance)
-    - take me to step [1](nth utterance)
+    - can you bring me to step number [2](nth_utterance)
+    - go to step number [3](nth_utterance)
+    - take me to step [4](nth_utterance)
+    - take me to step [1](nth_utterance)
 
 - intent: how_to
   examples: |
@@ -217,6 +217,7 @@ nlu:
     - what can I substitute [olive oil](substitute_query) with
     - what can i use to replace [cheese](substitute_query)
     - what is a substitute for [milk](substitute_query)
+    - what is a substitute for [tuna](substitute_query)
     - substitute for [heavy whipping cream](substitute_query)
     - replacement for [sesame seeds](substitute_query)
     - replacement for [onions](substitute_query)

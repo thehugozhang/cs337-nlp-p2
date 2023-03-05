@@ -3,6 +3,14 @@ from number_parser import parse_ordinal
 import requests
 import json
 
+# NLTK configuration.
+import nltk
+nltk.download("punkt")
+nltk.download("averaged_perceptron_tagger")
+nltk.download('maxent_ne_chunker')
+nltk.download('words')
+from nltk import word_tokenize, pos_tag
+
 def parse_recipe(url):
     # Scrape recipe to json.
     scraper = scrape_me(url)
@@ -84,3 +92,43 @@ def substitute_ingredient(query):
     substitute_ingredient_json = json.loads(substitute_ingredient_response.text)
 
     return substitute_ingredient_json
+
+
+# Original source from https://github.com/thehugozhang/cs337-nlp-p1/blob/main/regex_system.py.
+def pos_tag_text(text, lowercase=True, filter_stop_words=False):
+    if (lowercase): text = text.lower()
+
+    words = word_tokenize(text)
+
+    if filter_stop_words: words = [word for word in words if word.casefold() not in stop_words]
+
+    words = nltk.pos_tag(words)
+
+    return words
+
+# Original source from https://github.com/thehugozhang/cs337-nlp-p1/blob/main/regex_system.py.
+def chunk_tagged_text(text_list, chunk_rule, draw_tree=False):
+    chunk_parser = nltk.RegexpParser(chunk_rule)
+    tree = chunk_parser.parse(text_list)
+    if draw_tree: tree.draw()
+
+    results = []
+    for subtree in tree.subtrees(filter=lambda t: t.label() == chunk_rule.split(':')[0]):
+        extracted_text = []
+        for pos_tuple in subtree[0:]:
+            extracted_text.append(pos_tuple[0])
+        results.append(" ".join(extracted_text))
+    
+    return results
+
+def get_vague_how_to(substep):
+    tagged_substep = pos_tag_text(substep, True, False)
+
+    # Entity Name chunking RegEx.
+    # Grammar rule: a verb (dice) followed a determiner (optional) and any number of nouns (tomato).
+    # Ex. Dice (VB) the (DT) tomato (NN).
+    inferred_entity_grammar = """How-To Query: {<VB><DT>?<JJ>*<NN|NNS|NNP|NNPS>}"""
+    entities = chunk_tagged_text(tagged_substep, inferred_entity_grammar, False)
+    print("Detected vague entities:", entities)
+
+    return entities

@@ -27,6 +27,11 @@ Specific installation instructions can be found below.
 pip3 install rasa
 ```
 
+* To install NLTK:
+```
+pip3 install nltk
+```
+
 * To install Recipe Scrapers:
 ```
 pip3 install recipe-scrapers
@@ -41,6 +46,7 @@ pip3 install zestful-parse-ingredient
 ```
 pip3 install number-parser
 ```
+
 ### Installation debugging
 
 In certain situations, some Rasa dependencies may need to be individually installed or removed. For more information, see this [git issue](https://github.com/OpenZeppelin/nile/issues/105).
@@ -58,6 +64,23 @@ pip3 install colorama
 ```
 pip3 uninstall uvloop
 ```
+
+### Third-Party APIs
+
+Additionally, this project depends on several external APIs for its advanced functionality. *Note: Exceeding these free rate limits could result in some CH3FB0T functionalities being unavailable until the next day.*
+
+* [Youtube Search Results](https://rapidapi.com/marindelija/api/youtube-search-results/)
+    * **Purpose:** For retrieving most relevant Youtube results for how-to queries.
+    * **Rate:** 100 requests / day.
+* [Wiki Briefs](https://rapidapi.com/dfskGT/api/wiki-briefs/)
+    * **Purpose:** For retrieving summaries and images of what-is queries.
+    * **Rate:** unlimited. 
+* [Spoonacular API](https://spoonacular.com/food-api/)
+    * **Purpose:** For querying substitute ingredient matches.
+    * **Rate:** 50 request / day.
+* [Parseology](https://rapidapi.com/parseology/api/ingredient-parser2)
+    * **Purpose:** For parsing quantities and units from ingredients.
+    * **Rate:** $0.015 / request.
 
 ## Executing the system
 
@@ -126,5 +149,3 @@ kill -9 $(lsof -ti:5055)
 ## Help
 
 For any additional troubleshooting assistance, please reach out to [hugozhang2023@u.northwestern.edu](mailto:hugozhang2023@u.northwestern.edu).
-
-## Results

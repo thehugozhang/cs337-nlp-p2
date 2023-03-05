@@ -84,7 +84,7 @@ slots:
     type: text
     mappings:
     - type: from_entity
-      entity: what_is_query'
+      entity: what_is_query
 
   substitute_query:
     type: text

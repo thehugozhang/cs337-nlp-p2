@@ -5,7 +5,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 # Relative import of custom recipe parsing functions.
-from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary, substitute_ingredient
+from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary, substitute_ingredient, get_vague_how_to
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -228,13 +228,22 @@ class ActionHowTo(Action):
         recipe_steps_list = tracker.get_slot('recipe_steps_list')
         recipe_current_step = tracker.get_slot('recipe_current_step')
 
+        recipe_current_step_display = recipe_current_step + 1
+        current_step_text = recipe_steps_list[recipe_current_step]
+
         if how_to_query is None:
-            print("do something")
-
-        formatted_query = "how+to+" + how_to_query.replace(" ", "+")    
-        youtube_link = retrieve_youtube_video(formatted_query)
-
-        dispatcher.utter_message(text="Sure! Here's the most relevant Youtube tutorial I could find on how to {}:\n\n{}".format(how_to_query, youtube_link))
+            vague_entities = get_vague_how_to(current_step_text)
+            if len(vague_entities) > 0:
+                dispatcher.utter_message(text="I was able to infer the following intermediate steps from Step {} that you may be confused about:".format(recipe_current_step_display))
+                for entity in vague_entities:
+                    dispatcher.utter_message(text="* {}".format(entity))
+                formatted_query = "how+to+" + vague_entities[0].replace(" ", "+")    
+                youtube_link = retrieve_youtube_video(formatted_query)
+                dispatcher.utter_message(text="Here is a relevant Youtube video that may help clarify the process:\n\n{}".format(youtube_link))
+        else:
+            formatted_query = "how+to+" + how_to_query.replace(" ", "+")    
+            youtube_link = retrieve_youtube_video(formatted_query)
+            dispatcher.utter_message(text="Sure! Here's the most relevant Youtube tutorial I could find on how to {}:\n\n{}".format(how_to_query, youtube_link))
         
         return [SlotSet("how_to_query", None)]
 
