@@ -64,7 +64,7 @@ To communicate with <span style="color:#4E2A84">**CH3FB0T**</span> via the comma
 rasa train
 ```
 
-* Next, start the actions server (to communicate with recipe-parsing backend) and run the chatbot in shell!
+* Next, start the actions server (to communicate with recipe-parsing backend) and run the chatbot in shell! *Note: CH3FB0T may take ~1-2 minutes to initialize.*
 
 ```
 rasa run actions & rasa shell

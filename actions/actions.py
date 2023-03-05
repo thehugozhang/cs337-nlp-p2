@@ -98,19 +98,6 @@ class ActionRetrieveIngredients(Action):
 # Navigation utterances.
 ###############################################################
 
-class ActionPreviousStep(Action):
-
-    def name(self) -> Text:
-        return "action_previous_step"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text="Implement previous step here.")
-
-        return []
-
 class ActionNextStep(Action):
 
     def name(self) -> Text:
@@ -121,6 +108,19 @@ class ActionNextStep(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         dispatcher.utter_message(text="Implement next step here.")
+
+        return []
+
+class ActionPreviousStep(Action):
+
+    def name(self) -> Text:
+        return "action_previous_step"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Implement previous step here.")
 
         return []
 

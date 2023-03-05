@@ -11,6 +11,8 @@ intents:
   - recipe_search
   - steps_retrieval
   - ingredients_retrieval
+  - step_forward
+  - step_backward
 
 entities:
   - recipe_url
@@ -50,7 +52,7 @@ slots:
     initial_value: 0
     mappings:
     - type: custom
-    
+
   recipe_ingredients_list:
     type: list
     initial_value: []
@@ -61,8 +63,8 @@ actions:
   - action_parse_recipe
   - action_retrieve_steps
   - action_retrieve_ingredients
-  - action_previous_step
   - action_next_step
+  - action_previous_step
   - action_nth_step
   - action_repeat_step
 

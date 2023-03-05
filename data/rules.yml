@@ -21,3 +21,13 @@ rules:
   steps:
   - intent: ingredients_retrieval
   - action: action_retrieve_ingredients
+
+- rule: Go forward one step if the user indicates they would like the next step
+  steps:
+  - intent: step_forward
+  - action: action_next_step
+
+- rule: Go backwards one step if the user indicates they would like the previous step
+  steps:
+  - intent: step_backward
+  - action: action_previous_step

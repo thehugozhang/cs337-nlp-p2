@@ -9,5 +9,8 @@ stories:
   - intent: recipe_search
   - action: action_parse_recipe
   - slot_was_set:
+    - recipe_name: "example recipe name"
+    - recipe_steps: 8
     - recipe_steps_list: ["example list of steps"]
+    - recipe_current_step: 0
     - recipe_ingredients_list: ["example list of ingredients"]
