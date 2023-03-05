@@ -101,6 +101,11 @@ rasa run
 source ./venv/bin/activate
 ```
 
+* If you are rerunning `rasa run actions`, make sure to kill the previous version on the same port by running:
+```
+kill -9 $(lsof -ti:5055)
+```
+
 ## Help
 
 For any additional troubleshooting assistance, please reach out to [hugozhang2023@u.northwestern.edu](mailto:hugozhang2023@u.northwestern.edu).

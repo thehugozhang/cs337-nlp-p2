@@ -1,7 +1,11 @@
 from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
+from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
+
+# Relative import of custom recipe parsing functions.
+from .recipe import parse_recipe
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -16,9 +20,27 @@ class ActionParseRecipe(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Implement recipe parsing here.")
+        # Parse recipe from inferred slot value.
+        recipe_url = tracker.get_slot('recipe_url')
+        print("Parsed URL:", recipe_url)
 
-        return []
+        try:
+            (recipe_json, ingredients_json) = parse_recipe(recipe_url)
+        except:
+            dispatcher.utter_message("Hmmm, I don't recognize that recipe schema. Do you have an alternative recipe from a different source?")
+            return []
+        else:
+            recipe_name = recipe_json["title"]
+            recipe_steps = len(recipe_json["instructions_list"])
+
+            dispatcher.utter_message("Great, let's cook {} which has {} steps! What would you like to know?".format(recipe_name, recipe_steps))
+
+            # Set slot values with parsed information so CH3FB0T can "remember" data about the recipe.
+            return [
+                SlotSet("recipe_name", recipe_name),
+                SlotSet("recipe_steps", recipe_steps),
+                SlotSet("recipe_current_step", 0),
+            ]
     
 class ActionUnknownURL(Action):
 
@@ -29,7 +51,33 @@ class ActionUnknownURL(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Hmm, I am unfamiliar with that recipe schema. Do you have an alternative recipe from a different source?")
+        dispatcher.utter_message(text="Hmmm, I don't recognize that recipe schema. Do you have an alternative recipe from a different source?")
+
+        return []
+
+class ActionUnknownName(Action):
+
+    def name(self) -> Text:
+        return "action_unknown_name"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="I was unable to parse the recipe name.")
+
+        return []
+
+class ActionUnknownSteps(Action):
+
+    def name(self) -> Text:
+        return "action_unknown_steps"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="I was unable to parse the recipe steps.")
 
         return []
 
