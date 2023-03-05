@@ -64,6 +64,30 @@ nlu:
     - [https://www.allrecipes.com/recipe/16468/tuna-fish-salad/](recipe_url)
     - [https://www.baking-sense.com/2017/09/14/white-cake/](recipe_url)
 
+- intent: steps_retrieval
+  examples: |
+    - "Show me the steps list"
+    - "what are the instructions"
+    - "show me all the instructions involved"
+    - "what are all the instructions"
+    - "instructions list"
+    - "what are the steps involved?"
+    - "what are the steps of the recipe?"
+    - "can I see the list of steps"?
+    - "step list"
+    - "show list of steps"
+    - "what are the steps"
+
+- intent: ingredients_retrieval
+  examples: |
+    - "Show me the ingredients list"
+    - "what ingredients do I need?"
+    - "show me the ingredients"
+    - "ingredient list"
+    - "what are the ingredients"
+    - "what ingredients do I need"
+    - "can I see all the ingredients"
+
 - intent: mood_great
   examples: |
     - perfect

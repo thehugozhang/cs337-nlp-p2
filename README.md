@@ -37,11 +37,20 @@ pip3 install zestful-parse-ingredient
 ```
 ### Installation debugging
 
-In certain situations, some Rasa dependencies may need to be individually installed. For more information, see this [git issue](https://github.com/OpenZeppelin/nile/issues/105).
+In certain situations, some Rasa dependencies may need to be individually installed or removed. For more information, see this [git issue](https://github.com/OpenZeppelin/nile/issues/105).
 
 * To install Greenlet:
 ```
 pip3 install greenlet==1.1.2
+```
+* To install Colorama:
+```
+pip3 install colorama
+```
+
+* For some recipes, you may encounter an `asyncio` open bug in Rasa 3.3.x where shell output may be blocked from logging. The following command removes the problematic dependency causing the bug. For more information, see this [git issue](https://github.com/RasaHQ/rasa/issues/11575).
+```
+pip3 uninstall uvloop
 ```
 
 ## Executing the system

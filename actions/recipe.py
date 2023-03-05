@@ -7,6 +7,9 @@ def parse_recipe(url):
     scraper = scrape_me(url)
     raw_recipe_json = scraper.to_json()
 
+    return raw_recipe_json
+
+def parse_ingredients(ingredients):
     # Parse ingredients into structured data.
     url = "https://ingredient-parser2.p.rapidapi.com/parse-ingredients"
 
@@ -20,4 +23,4 @@ def parse_recipe(url):
     ingredients_response = requests.request("POST", url, json=payload, headers=headers)
     ingredients_json = json.loads(ingredients_response.text)
 
-    return (raw_recipe_json, ingredients_json)
+    return ingredients_json

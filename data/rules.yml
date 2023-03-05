@@ -11,3 +11,13 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Display the recipe steps whenever a user requests it
+  steps:
+  - intent: steps_retrieval
+  - action: action_retrieve_steps
+
+- rule: Display the recipe ingredients whenever a user requests it
+  steps:
+  - intent: ingredients_retrieval
+  - action: action_retrieve_ingredients

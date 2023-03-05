@@ -5,7 +5,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 # Relative import of custom recipe parsing functions.
-from .recipe import parse_recipe
+from .recipe import parse_recipe, parse_ingredients
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -25,13 +25,15 @@ class ActionParseRecipe(Action):
         print("Parsed URL:", recipe_url)
 
         try:
-            (recipe_json, ingredients_json) = parse_recipe(recipe_url)
+            recipe_json = parse_recipe(recipe_url)
         except:
             dispatcher.utter_message("Hmmm, I don't recognize that recipe schema. Do you have an alternative recipe from a different source?")
             return []
         else:
             recipe_name = recipe_json["title"]
             recipe_steps = len(recipe_json["instructions_list"])
+            recipe_steps_list = recipe_json["instructions_list"]
+            recipe_ingredients = recipe_json["ingredients"]
 
             dispatcher.utter_message("Great, let's cook {} which has {} steps! What would you like to know?".format(recipe_name, recipe_steps))
 
@@ -39,45 +41,50 @@ class ActionParseRecipe(Action):
             return [
                 SlotSet("recipe_name", recipe_name),
                 SlotSet("recipe_steps", recipe_steps),
+                SlotSet("recipe_steps_list", recipe_steps_list),
                 SlotSet("recipe_current_step", 0),
+                SlotSet("recipe_ingredients_list", recipe_ingredients),
             ]
-    
-class ActionUnknownURL(Action):
+
+###############################################################
+# Recipe retrieval utterances.
+###############################################################
+
+class ActionRetrieveSteps(Action):
 
     def name(self) -> Text:
-        return "action_unknown_url"
+        return "action_retrieve_steps"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Hmmm, I don't recognize that recipe schema. Do you have an alternative recipe from a different source?")
+        # Retrieve values from slots.
+        recipe_name = tracker.get_slot('recipe_name')
+        recipe_steps_list = tracker.get_slot('recipe_steps_list')
+
+        steps_text = "Here are all the steps to make {}:\n\n".format(recipe_name)
+        for index, step in enumerate(recipe_steps_list):
+            steps_text += (str(index + 1)) + ". " + step + "\n"
+        steps_text += "\nI can help walk you through each step from start to finish or you can jump directly to a later step by specifying a number!"
+
+        dispatcher.utter_message(text=steps_text)
 
         return []
 
-class ActionUnknownName(Action):
+class ActionRetrieveIngredients(Action):
 
     def name(self) -> Text:
-        return "action_unknown_name"
+        return "action_retrieve_ingredients"
 
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="I was unable to parse the recipe name.")
+        # Retrieve ingredients from slots.
+        recipe_ingredients_list = tracker.get_slot('recipe_ingredients_list')
 
-        return []
-
-class ActionUnknownSteps(Action):
-
-    def name(self) -> Text:
-        return "action_unknown_steps"
-
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text="I was unable to parse the recipe steps.")
+        dispatcher.utter_message(text="Implement retrieve ingredients here.")
 
         return []
 
