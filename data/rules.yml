@@ -42,7 +42,12 @@ rules:
   - intent: step_repeat
   - action: action_repeat_step
 
-- rule: Find information online for a user how-to query
+- rule: Find most relevant Youtube videos for a user how-to query
   steps:
   - intent: how_to
   - action: action_how_to
+
+- rule: Find relevant Wikipedia information online for a user what_is query
+  steps:
+  - intent: what_is
+  - action: action_what_is

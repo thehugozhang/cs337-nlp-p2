@@ -52,3 +52,18 @@ def retrieve_youtube_video(query):
     for result in search_result_json["items"]:
         if result["type"] == "video":
             return result["url"]
+
+def what_is_wiki_summary(query):
+    url = "https://wiki-briefs.p.rapidapi.com/search"
+
+    query_string = {"q" : query, "topk" : "1"}
+
+    headers = {
+        "X-RapidAPI-Key": "dce9755f64mshe61076df41050e4p1e1571jsn25bf332ab4e6",
+        "X-RapidAPI-Host": "wiki-briefs.p.rapidapi.com"
+    }
+
+    wiki_summary_response = requests.request("GET", url, headers=headers, params=query_string)
+    wiki_summary_json = json.loads(wiki_summary_response.text)
+
+    return wiki_summary_json

@@ -196,6 +196,20 @@ nlu:
     - can you teach me how to [simmer a soup](how_to_query)
     - can you teach me how to [bake a cake](how_to_query)
 
+- intent: what_is
+  examples: |
+    - what are [bonito flakes](what_is_query)
+    - what is a [spatula](what_is_query)
+    - what is [nori](what_is_query)
+    - what is a [blender](what_is_query)
+    - what is a [emulsifier](what_is_query)
+    - what is an [oven](what_is_query)
+    - what is a [cutting board](what_is_query)
+    - what is a [pressure cooker](what_is_query)
+    - what are [oven mitts](what_is_query)
+    - what are [leeks](what_is_query)
+    - what is [le cruset](what_is_query)
+
 - intent: mood_great
   examples: |
     - perfect

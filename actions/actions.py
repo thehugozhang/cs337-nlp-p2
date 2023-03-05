@@ -5,7 +5,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 # Relative import of custom recipe parsing functions.
-from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video
+from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -227,7 +227,7 @@ class ActionHowTo(Action):
         how_to_query = tracker.get_slot('how_to_query')
         recipe_steps_list = tracker.get_slot('recipe_steps_list')
         recipe_current_step = tracker.get_slot('recipe_current_step')
-        
+
         if how_to_query is None:
             print("do something")
 
@@ -237,3 +237,34 @@ class ActionHowTo(Action):
         dispatcher.utter_message(text="Sure! Here's the most relevant Youtube tutorial I could find on how to {}:\n\n{}".format(how_to_query, youtube_link))
         
         return [SlotSet("how_to_query", None)]
+
+###############################################################
+# Specific what-is utterances.
+###############################################################
+
+class ActionWhatIs(Action):
+
+    def name(self) -> Text:
+        return "action_what_is"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Retrieve values from slots.
+        what_is_query = tracker.get_slot('what_is_query')
+
+        if what_is_query is None:
+            dispatcher.utter_message(text="Hmm, I am not sure what you are referring to... Could you be more specific?")
+        else:
+            wiki_summary_json = what_is_wiki_summary(what_is_query)
+            summary_title = wiki_summary_json["title"]
+            summary_image = wiki_summary_json["image"]
+            summary_text = wiki_summary_json["summary"][0]
+
+            dispatcher.utter_message(text="Let's find out together! Here's what I was able to summarize from reading about *{}* on Wikipedia.".format(summary_title))
+            dispatcher.utter_message(image = summary_image)
+            dispatcher.utter_message(text=">{}".format(summary_text))
+            dispatcher.utter_message(text="Hope this was helpful! Anything else you'd like to ask?")
+
+        return [SlotSet("what_is_query", None)]

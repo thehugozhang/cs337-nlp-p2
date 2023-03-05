@@ -16,6 +16,7 @@ intents:
   - step_nth
   - step_repeat
   - how_to
+  - what_is
 
 entities:
   - recipe_url
@@ -26,6 +27,7 @@ entities:
   - recipe_ingredients_list
   - nth_utterance
   - how_to_query
+  - what_is_query
 
 slots:
   recipe_url:
@@ -76,6 +78,12 @@ slots:
     - type: from_entity
       entity: how_to_query
 
+  what_is_query:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: what_is_query
+
 actions:
   - action_parse_recipe
   - action_retrieve_steps
@@ -85,6 +93,7 @@ actions:
   - action_nth_step
   - action_repeat_step
   - action_how_to
+  - action_what_is
 
 responses:
   utter_greet:
@@ -104,7 +113,9 @@ responses:
   - text: "Great, carry on!"
 
   utter_goodbye:
-  - text: "Bye"
+  - text: "Goodbye! Send me another recipe if you want to cook together again :)"
+  - text: "See you later, Chef. Let me know if you ever want to cook together again!"
+  - text: "Okay, take care! Always happy to answer more recipe questions."
 
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
