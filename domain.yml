@@ -17,6 +17,7 @@ intents:
   - step_repeat
   - how_to
   - what_is
+  - substitute
 
 entities:
   - recipe_url
@@ -28,6 +29,7 @@ entities:
   - nth_utterance
   - how_to_query
   - what_is_query
+  - substitute_query
 
 slots:
   recipe_url:
@@ -82,7 +84,13 @@ slots:
     type: text
     mappings:
     - type: from_entity
-      entity: what_is_query
+      entity: what_is_query'
+
+  substitute_query:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: substitute_query
 
 actions:
   - action_parse_recipe
@@ -94,6 +102,7 @@ actions:
   - action_repeat_step
   - action_how_to
   - action_what_is
+  - action_substitute
 
 responses:
   utter_greet:

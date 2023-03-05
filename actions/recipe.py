@@ -54,6 +54,7 @@ def retrieve_youtube_video(query):
             return result["url"]
 
 def what_is_wiki_summary(query):
+    # Retrieve a wikipedia summary and image from provided query.
     url = "https://wiki-briefs.p.rapidapi.com/search"
 
     query_string = {"q" : query, "topk" : "1"}
@@ -67,3 +68,19 @@ def what_is_wiki_summary(query):
     wiki_summary_json = json.loads(wiki_summary_response.text)
 
     return wiki_summary_json
+
+def substitute_ingredient(query):
+    # Retrieve potential substitute ingredients from provided query.
+    url = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/substitutes"
+
+    query_string = {"ingredientName" : query}
+
+    headers = {
+        "X-RapidAPI-Key": "dce9755f64mshe61076df41050e4p1e1571jsn25bf332ab4e6",
+        "X-RapidAPI-Host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+    }
+
+    substitute_ingredient_response = requests.request("GET", url, headers=headers, params=query_string)
+    substitute_ingredient_json = json.loads(substitute_ingredient_response.text)
+
+    return substitute_ingredient_json

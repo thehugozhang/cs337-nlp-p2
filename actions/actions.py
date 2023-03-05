@@ -5,7 +5,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 # Relative import of custom recipe parsing functions.
-from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary
+from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary, substitute_ingredient
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -268,3 +268,33 @@ class ActionWhatIs(Action):
             dispatcher.utter_message(text="Hope this was helpful! Anything else you'd like to ask?")
 
         return [SlotSet("what_is_query", None)]
+
+###############################################################
+# Ingredient Substitute utterances.
+###############################################################
+
+class ActionSubstitute(Action):
+
+    def name(self) -> Text:
+        return "action_substitute"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Retrieve values from slots.
+        substitute_query = tracker.get_slot('substitute_query')
+
+        if substitute_query is None:
+            dispatcher.utter_message(text="Hmm, I am not sure what you are referring to... Could you be more specific?")
+        else:
+            substitute_ingredient_json = substitute_ingredient(substitute_query)
+            if substitute_ingredient_json["status"] == "success":
+                dispatcher.utter_message(text="Great question! Here are {} some possible substitutes and their proportions I found for {}:".format(len(substitute_ingredient_json["substitutes"]), substitute_query))
+                for substitute in substitute_ingredient_json["substitutes"]:
+                    dispatcher.utter_message(text="* {}".format(substitute))
+
+            else:
+                dispatcher.utter_message(text="Hmm, I was unable to find any suitable substitutes for {}.".format(substitute_query))
+
+        return [SlotSet("substitute_query", None)]

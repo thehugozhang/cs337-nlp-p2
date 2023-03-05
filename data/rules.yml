@@ -51,3 +51,8 @@ rules:
   steps:
   - intent: what_is
   - action: action_what_is
+
+- rule: Find an appropriate substitute for a user-provided ingredient
+  steps:
+  - intent: substitute
+  - action: action_substitute

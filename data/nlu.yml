@@ -210,39 +210,17 @@ nlu:
     - what are [leeks](what_is_query)
     - what is [le cruset](what_is_query)
 
-- intent: mood_great
+- intent: substitute
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - what is an appropriate substitute for [rice](substitute_query)
+    - what is a substitute for [butter](substitute_query)
+    - what can I substitute [olive oil](substitute_query) with
+    - what can i use to replace [cheese](substitute_query)
+    - what is a substitute for [milk](substitute_query)
+    - substitute for [heavy whipping cream](substitute_query)
+    - replacement for [sesame seeds](substitute_query)
+    - replacement for [onions](substitute_query)
+    - I don't have any [garlic](substitute_query). what can i substitute it for
 
 - intent: bot_challenge
   examples: |
