@@ -33,3 +33,22 @@ def alnum_parse_ordinal(value):
         return int(value[:-2])
     else:
         return parse_ordinal(value)
+
+def retrieve_youtube_video(query):
+    # Retrieve the most relevant video result from the provided query.
+    url = "https://youtube-search-results.p.rapidapi.com/youtube-search/"
+
+    query_string = {"q" : query}
+
+    headers = {
+        "X-RapidAPI-Key": "dce9755f64mshe61076df41050e4p1e1571jsn25bf332ab4e6",
+        "X-RapidAPI-Host": "youtube-search-results.p.rapidapi.com"
+    }
+
+    search_result_response = requests.request("GET", url, headers=headers, params=query_string)
+    search_result_json = json.loads(search_result_response.text)
+
+    # Return most relevant video result.
+    for result in search_result_json["items"]:
+        if result["type"] == "video":
+            return result["url"]

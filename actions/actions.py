@@ -5,7 +5,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 # Relative import of custom recipe parsing functions.
-from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal
+from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -225,6 +225,15 @@ class ActionHowTo(Action):
 
         # Retrieve values from slots.
         how_to_query = tracker.get_slot('how_to_query')
-        dispatcher.utter_message(text='Implement specific how-to queries: "{}".'.format(how_to_query))
+        recipe_steps_list = tracker.get_slot('recipe_steps_list')
+        recipe_current_step = tracker.get_slot('recipe_current_step')
+        
+        if how_to_query is None:
+            print("do something")
+
+        formatted_query = "how+to+" + how_to_query.replace(" ", "+")    
+        youtube_link = retrieve_youtube_video(formatted_query)
+
+        dispatcher.utter_message(text="Sure! Here's the most relevant Youtube tutorial I could find on how to {}:\n\n{}".format(how_to_query, youtube_link))
         
         return [SlotSet("how_to_query", None)]

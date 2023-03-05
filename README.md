@@ -97,15 +97,17 @@ slack:
 rasa train
 ```
 
-* Rasa communicates using your local 5005 port. To make this port publicly available on the internet, you can use ngrok. More information: [Rasa Docs](https://rasa.com/docs/rasa/messaging-and-voice-channels#testing-channels-on-your-local-machine).
+* Next, run the following command to start <span style="color:#4E2A84">**CH3FB0T**</span>.
+```
+rasa run & rasa run actions
+```
+
+* Rasa communicates using your local 5005 port. To make this port publicly available on the internet to communicate with Slack, you can use ngrok. More information: [Rasa Docs](https://rasa.com/docs/rasa/messaging-and-voice-channels#testing-channels-on-your-local-machine).
     * After creating a tunnel using the command below, make sure to replace the Request URL in Event Subscriptions on Slack's Your Apps section with the ngrok.io Forwarding URL, followed by the path ending `/webhooks/slack/webhook`.
 ```
 ngrok http 5005
 ```
-* Next, run the following command to start <span style="color:#4E2A84">**CH3FB0T**</span>.
-```
-rasa run
-```
+
 * Voila! Open the Slack workspace and invite <span style="color:#4E2A84">**CH3FB0T**</span> to start chatting.
 
 ### Execution notes
