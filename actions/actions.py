@@ -5,7 +5,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 # Relative import of custom recipe parsing functions.
-from .recipe import parse_recipe, parse_ingredients
+from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -172,9 +172,21 @@ class ActionNthStep(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         # Retrieve values from slots.
+        recipe_steps = tracker.get_slot('recipe_steps')
+        recipe_steps_list = tracker.get_slot('recipe_steps_list')
+        recipe_current_step = tracker.get_slot('recipe_current_step')
         nth_utterance = tracker.get_slot('nth_utterance')
 
-        dispatcher.utter_message(text="Implement {} step here.".format(nth_utterance))
+        # Additional step count for display purposes (versus internal indexing).
+        nth_index = alnum_parse_ordinal(nth_utterance) - 1
+        recipe_current_step_display = nth_index + 1
+
+        try:
+            dispatcher.utter_message(text="Here is the {} step of the recipe:\n\nStep {}. {}".format(nth_utterance, recipe_current_step_display, recipe_steps_list[nth_index]))
+        except IndexError:
+            dispatcher.utter_message(text="The {} step doesn't exist in the recipe! There are only {} total steps to choose from.".format(nth_utterance, recipe_steps))
+        except:
+            dispatcher.utter_message(text="Hmmm, I am unable to retrieve that step. Perhaps try navigating the steps one-by-one or pick a different step number.")
 
         return []
 

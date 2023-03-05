@@ -161,6 +161,10 @@ nlu:
     - go to the [tenth](nth_utterance) instruction
     - go to the [eleventh](nth_utterance) instruction
     - go to the [twelfth](nth_utterance) instruction
+    - can you bring me to step number [2](nth utterance)
+    - go to step number [3](nth utterance)
+    - take me to step [4](nth utterance)
+    - take me to step [1](nth utterance)
 
 - intent: mood_great
   examples: |

@@ -1,4 +1,5 @@
 from recipe_scrapers import scrape_me
+from number_parser import parse_ordinal
 import requests
 import json
 
@@ -24,3 +25,11 @@ def parse_ingredients(ingredients):
     ingredients_json = json.loads(ingredients_response.text)
 
     return ingredients_json
+
+def alnum_parse_ordinal(value):
+    if value.isnumeric():
+        return int(value)
+    elif value.isalnum() and not value.isalpha() and not value.isdigit():
+        return int(value[:-2])
+    else:
+        return parse_ordinal(value)
