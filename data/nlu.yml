@@ -166,6 +166,36 @@ nlu:
     - take me to step [4](nth utterance)
     - take me to step [1](nth utterance)
 
+- intent: how_to
+  examples: |
+    - how do i [fold an onigiri](how_to_query)
+    - how do i [dice an onion](how_to_query)
+    - how do i [dice a tomato](how_to_query)
+    - how do i [carve a turkey](how_to_query)
+    - how do i [mince garlic](how_to_query)
+    - how do i [peel a potato](how_to_query)
+    - how do i [grill a medium rare steak](how_to_query)
+    - how to [boil noodle al dente](how_to_query)
+    - how to [fillet a fish](how_to_query)
+    - how to [roll sushi](how_to_query)
+    - how to [debone a salmon](how_to_query)
+    - how to [cook rice in a pot](how_to_query)
+    - can you show me how to [deep fry food](how_to_query)
+    - can you show me how to [knead dough](how_to_query)
+    - can you show me how to [crack an egg](how_to_query)
+    - can you show me how to [scramble an egg](how_to_query)
+    - can you show me how to [poach an egg](how_to_query)
+    - search a tutorial on how to [saute vegetables](how_to_query)
+    - search a tutorial on how to [whisk cake batter](how_to_query)
+    - search a tutorial on how to [caramelize onions](how_to_query)
+    - search a tutorial on how to [mash potatoes](how_to_query)
+    - search a tutorial on how to [steam dumplings](how_to_query)
+    - can you teach me how to [properly hold a knife](how_to_query)
+    - can you teach me how to [sharpen a knife](how_to_query)
+    - can you teach me how to [use a pressure cooker](how_to_query)
+    - can you teach me how to [simmer a soup](how_to_query)
+    - can you teach me how to [bake a cake](how_to_query)
+
 - intent: mood_great
   examples: |
     - perfect

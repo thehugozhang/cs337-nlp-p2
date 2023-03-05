@@ -213,3 +213,18 @@ class ActionRepeatStep(Action):
 ###############################################################
 # Specific how-to utterances.
 ###############################################################
+
+class ActionHowTo(Action):
+
+    def name(self) -> Text:
+        return "action_how_to"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Retrieve values from slots.
+        how_to_query = tracker.get_slot('how_to_query')
+        dispatcher.utter_message(text='Implement specific how-to queries: "{}".'.format(how_to_query))
+        
+        return [SlotSet("how_to_query", None)]

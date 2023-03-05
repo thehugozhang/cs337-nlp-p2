@@ -41,3 +41,8 @@ rules:
   steps:
   - intent: step_repeat
   - action: action_repeat_step
+
+- rule: Find information online for a user how-to query
+  steps:
+  - intent: how_to
+  - action: action_how_to

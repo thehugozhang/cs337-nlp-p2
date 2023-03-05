@@ -15,6 +15,7 @@ intents:
   - step_backward
   - step_nth
   - step_repeat
+  - how_to
 
 entities:
   - recipe_url
@@ -24,6 +25,7 @@ entities:
   - recipe_current_step
   - recipe_ingredients_list
   - nth_utterance
+  - how_to_query
 
 slots:
   recipe_url:
@@ -68,6 +70,12 @@ slots:
     - type: from_entity
       entity: nth_utterance
 
+  how_to_query:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: how_to_query
+
 actions:
   - action_parse_recipe
   - action_retrieve_steps
@@ -76,6 +84,7 @@ actions:
   - action_previous_step
   - action_nth_step
   - action_repeat_step
+  - action_how_to
 
 responses:
   utter_greet:
