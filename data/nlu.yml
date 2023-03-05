@@ -122,6 +122,46 @@ nlu:
     - Go backward one instruction
     - Go back one step
 
+- intent: step_repeat
+  examples: |
+    - can you show me that step again
+    - repeat that step please
+    - can you repeat that step again
+    - show me again
+    - show me that instruction again
+    - repeat that instruction
+    - please repeat the last instruction
+    - can I see the last step again
+    - repeat step
+    - repeat instruction
+    - i want to see the same step again
+    - show me the same step
+    - repeat the same step please
+
+- intent: step_nth
+  examples: |
+    - take me to the [1st](nth_utterance) step
+    - bring me the [second](nth_utterance) step
+    - show me the [first](nth_utterance) step
+    - show me the [third](nth_utterance) step
+    - go to the [5th](nth_utterance) step
+    - [2nd](nth_utterance) step please
+    - [third](nth_utterance) step
+    - go to the [fourth](nth_utterance) step
+    - go to [fifth](nth_utterance) step
+    - go to the [sixth](nth_utterance) step
+    - bring me to the [seventh](nth_utterance) step
+    - go to [eighth](nth_utterance) step
+    - what is the [4th](nth_utterance) step
+    - can you tell me the [9th](nth_utterance) step
+    - what was the [15th] step again
+    - go to [3rd](nth_utterance) instruction
+    - [4th](nth_utterance) instruction
+    - go to the [ninth](nth_utterance) instruction
+    - go to the [tenth](nth_utterance) instruction
+    - go to the [eleventh](nth_utterance) instruction
+    - go to the [twelfth](nth_utterance) instruction
+
 - intent: mood_great
   examples: |
     - perfect

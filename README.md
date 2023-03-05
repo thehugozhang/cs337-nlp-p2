@@ -16,6 +16,7 @@ This system depends on the following third-party modules.
 * [Rasa](https://rasa.com/docs/rasa/installation/installing-rasa-open-source)
 * [Recipe Scrapers](https://pypi.org/project/recipe-scrapers/)
 * [Ingredient Parser (Zestful Client)](https://pypi.org/project/zestful-parse-ingredient/)
+* [number-parser](https://github.com/scrapinghub/number-parser)
 
 ### Installing
 
@@ -34,6 +35,11 @@ pip3 install recipe-scrapers
 * To install Ingredient Parser (Zestful Client):
 ```
 pip3 install zestful-parse-ingredient
+```
+
+* To install number-parser:
+```
+pip3 install number-parser
 ```
 ### Installation debugging
 

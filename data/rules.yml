@@ -31,3 +31,13 @@ rules:
   steps:
   - intent: step_backward
   - action: action_previous_step
+
+- rule: Go directly to the n-th step if the user indicates
+  steps:
+  - intent: step_nth
+  - action: action_nth_step
+
+- rule: Repeat the last displayed step if the user indicates
+  steps:
+  - intent: step_repeat
+  - action: action_repeat_step

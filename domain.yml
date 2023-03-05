@@ -13,6 +13,8 @@ intents:
   - ingredients_retrieval
   - step_forward
   - step_backward
+  - step_nth
+  - step_repeat
 
 entities:
   - recipe_url
@@ -21,6 +23,7 @@ entities:
   - recipe_steps_list
   - recipe_current_step
   - recipe_ingredients_list
+  - nth_utterance
 
 slots:
   recipe_url:
@@ -58,6 +61,12 @@ slots:
     initial_value: []
     mappings:
     - type: custom
+
+  nth_utterance:
+    type: any
+    mappings:
+    - type: from_entity
+      entity: nth_utterance
 
 actions:
   - action_parse_recipe

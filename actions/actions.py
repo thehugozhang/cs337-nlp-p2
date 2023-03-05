@@ -171,7 +171,10 @@ class ActionNthStep(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Implement nth step here.")
+        # Retrieve values from slots.
+        nth_utterance = tracker.get_slot('nth_utterance')
+
+        dispatcher.utter_message(text="Implement {} step here.".format(nth_utterance))
 
         return []
 
