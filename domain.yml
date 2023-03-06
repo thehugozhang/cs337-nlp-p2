@@ -5,8 +5,6 @@ intents:
   - goodbye
   - affirm
   - deny
-  - mood_great
-  - mood_unhappy
   - bot_challenge
   - recipe_search
   - steps_retrieval
@@ -18,6 +16,7 @@ intents:
   - how_to
   - what_is
   - substitute
+  - how_much
 
 entities:
   - recipe_url
@@ -30,6 +29,7 @@ entities:
   - how_to_query
   - what_is_query
   - substitute_query
+  - how_much_query
 
 slots:
   recipe_url:
@@ -92,6 +92,12 @@ slots:
     - type: from_entity
       entity: substitute_query
 
+  how_much_query:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: how_much_query
+
 actions:
   - action_parse_recipe
   - action_retrieve_steps
@@ -103,6 +109,7 @@ actions:
   - action_how_to
   - action_what_is
   - action_substitute
+  - action_how_much
 
 responses:
   utter_greet:
@@ -110,16 +117,6 @@ responses:
   - text: "Hey there, my name is CH3FB0T, your virtual cooking assistant. Do you have a recipe link?"
   - text: "Hello, I'm CH3FB0T, a virtual cooking chat assistant. Send me your recipe link and let's get cooking!"
   - text: "Hey! My name is CH3FB0T, your personal kitchen assistant. Please provide a recipe URL to get started."
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
 
   utter_goodbye:
   - text: "Goodbye! Send me another recipe if you want to cook together again :)"

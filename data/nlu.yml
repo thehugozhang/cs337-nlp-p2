@@ -218,10 +218,20 @@ nlu:
     - what can i use to replace [cheese](substitute_query)
     - what is a substitute for [milk](substitute_query)
     - what is a substitute for [tuna](substitute_query)
+    - what is a substitute for [soy sauce](substitute_query)
     - substitute for [heavy whipping cream](substitute_query)
     - replacement for [sesame seeds](substitute_query)
     - replacement for [onions](substitute_query)
     - I don't have any [garlic](substitute_query). what can i substitute it for
+
+- intent: how_much
+  examples: |
+    - how much [rice](how_much_query) do I need
+    - how much [flour](how_much_query) do i need
+    - how much [chicken](how_much_query) do i need
+    - how many cups of [water](how_much_query) do i need
+    - how many [eggs](how_much_query) do i need
+    - how many tablespoons of [salt](how_much_query) do i need
 
 - intent: bot_challenge
   examples: |

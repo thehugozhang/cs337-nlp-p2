@@ -279,7 +279,40 @@ class ActionWhatIs(Action):
         return [SlotSet("what_is_query", None)]
 
 ###############################################################
-# Ingredient Substitute utterances.
+# Ingredient how-much utterances.
+###############################################################
+
+class ActionHowMuch(Action):
+
+    def name(self) -> Text:
+        return "action_how_much"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Retrieve values from slots.
+        how_much_query = tracker.get_slot('how_much_query')
+        recipe_ingredients_list = tracker.get_slot('recipe_ingredients_list')
+        ingredients_json = parse_ingredients(recipe_ingredients_list)
+        
+        found_ingredient = False
+        if how_much_query is None:
+            dispatcher.utter_message(text="Hmm, I am not sure what you are referring to... Could you be more specific?")
+        else:
+            for individual_ingredient in ingredients_json["ingredients"]:
+                if how_much_query in individual_ingredient["name"]:
+                    dispatcher.utter_message(text="According to the recipe, you need {} {}(s) of {}. Hope this helps!".format(individual_ingredient["quantity"], individual_ingredient["unit"], individual_ingredient["name"]))
+                    found_ingredient = True
+        
+        if not found_ingredient and how_much_query is not None:
+            dispatcher.utter_message(text="This recipe does not use {}! Are you looking at the correct recipe?".format(how_much_query))
+
+        return [SlotSet("how_much_query", None)]
+
+
+###############################################################
+# Ingredient substitute utterances.
 ###############################################################
 
 class ActionSubstitute(Action):

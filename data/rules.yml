@@ -56,3 +56,8 @@ rules:
   steps:
   - intent: substitute
   - action: action_substitute
+
+- rule: Answer the amount of ingredient a recipe calls for
+  steps:
+  - intent: how_much
+  - action: action_how_much
