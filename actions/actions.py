@@ -5,7 +5,7 @@ from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
 # Relative import of custom recipe parsing functions.
-from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary, substitute_ingredient, get_vague_how_to
+from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary, substitute_ingredient, get_vague_how_to, get_duration
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -310,6 +310,36 @@ class ActionHowMuch(Action):
 
         return [SlotSet("how_much_query", None)]
 
+###############################################################
+# Recipe how-long utterances.
+###############################################################
+
+class ActionHowLong(Action):
+
+    def name(self) -> Text:
+        return "action_how_long"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Retrieve values from slots.
+        how_long_query = tracker.get_slot('how_long_query')
+
+        recipe_steps_list = tracker.get_slot('recipe_steps_list')
+        recipe_current_step = tracker.get_slot('recipe_current_step')
+
+        recipe_current_step_display = recipe_current_step + 1
+        current_step_text = recipe_steps_list[recipe_current_step]
+
+        duration = get_duration(current_step_text, how_long_query)
+
+        if duration is None:
+            dispatcher.utter_message(text="Hmm, I was unable to find a specific duration for how long you should {}. Maybe try rereading that step?".format(how_long_query))
+        else:
+            dispatcher.utter_message(text="Let me check for you! Here's what I found for this step:\n\n>{}\n\nHope this helps!".format(duration))
+            
+        return [SlotSet("how_long_query", None)]
 
 ###############################################################
 # Ingredient substitute utterances.

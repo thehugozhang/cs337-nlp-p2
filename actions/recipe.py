@@ -132,3 +132,18 @@ def get_vague_how_to(substep):
     print("Detected vague entities:", entities)
 
     return entities
+
+def get_duration(step, action):
+    # No case-sensitivity.
+    step = step.lower()
+    action = action.lower()
+    
+    # Elgible sentences with target action.
+    related_sentences = [sentence + '.' for sentence in step.split('.') if action in sentence]
+    elgible_sentences = [sentence for sentence in related_sentences if "second" in sentence or "minute" in sentence or "hour" in sentence or "day" in sentence]
+    starting_index = elgible_sentences[0].find(action)
+
+    if len(elgible_sentences) > 0:
+        return elgible_sentences[0][starting_index:].capitalize()
+    else:
+        return None

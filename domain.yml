@@ -17,6 +17,7 @@ intents:
   - what_is
   - substitute
   - how_much
+  - how_long
 
 entities:
   - recipe_url
@@ -30,6 +31,7 @@ entities:
   - what_is_query
   - substitute_query
   - how_much_query
+  - how_long_query
 
 slots:
   recipe_url:
@@ -98,6 +100,12 @@ slots:
     - type: from_entity
       entity: how_much_query
 
+  how_long_query:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: how_long_query
+
 actions:
   - action_parse_recipe
   - action_retrieve_steps
@@ -110,6 +118,7 @@ actions:
   - action_what_is
   - action_substitute
   - action_how_much
+  - action_how_long
 
 responses:
   utter_greet:

@@ -233,6 +233,11 @@ nlu:
     - how many [eggs](how_much_query) do i need
     - how many tablespoons of [salt](how_much_query) do i need
 
+- intent: how_long
+  examples: |
+    - how long do I need to [grill](how_long_query) for
+    - how long do i [bake](how_long_query) for
+
 - intent: bot_challenge
   examples: |
     - are you a bot?
