@@ -20,6 +20,7 @@ Built and tested on Python v3.9.12 and pip v23.0.1.
 This system depends on the following third-party modules.
 * [Rasa](https://rasa.com/docs/rasa/installation/installing-rasa-open-source)
 * [Recipe Scrapers](https://pypi.org/project/recipe-scrapers/)
+* [NLTK](https://www.nltk.org/install.html)
 * [number-parser](https://github.com/scrapinghub/number-parser)
 
 ### Installing
