@@ -73,6 +73,7 @@ mf2py==1.1.2
 msgpack==1.0.4
 multidict==5.2.0
 networkx==2.6.3
+nltk==3.8.1
 number-parser==0.3.0
 numpy==1.23.5
 oauthlib==3.2.2

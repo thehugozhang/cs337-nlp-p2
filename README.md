@@ -6,9 +6,10 @@ Developed for COMP_SCI 337 Natural Language Processing at [Northwestern Universi
 
 Meet <span style="color:#4E2A84">**CH3FB0T**</span>! This project is a contexual assistant chatbot that can interpret any online recipe URL and promptly respond to queries about it.
 
-Watch the demonstration below!
+Watch the Youtube demonstration below.
 
-[![Youtube Demonstration](http://img.youtube.com/vi/dQDzthvpEE4/0.jpg)](http://www.youtube.com/watch?v=dQDzthvpEE4)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=dQDzthvpEE4" target="_blank"><img src="http://img.youtube.com/vi/dQDzthvpEE4/0.jpg" 
+alt="Youtube Demonstration" width="240" height="180" border="10" /></a>
 
 ## Getting Started
 
@@ -19,7 +20,6 @@ Built and tested on Python v3.9.12 and pip v23.0.1.
 This system depends on the following third-party modules.
 * [Rasa](https://rasa.com/docs/rasa/installation/installing-rasa-open-source)
 * [Recipe Scrapers](https://pypi.org/project/recipe-scrapers/)
-* [Ingredient Parser (Zestful Client)](https://pypi.org/project/zestful-parse-ingredient/)
 * [number-parser](https://github.com/scrapinghub/number-parser)
 
 ### Installing
@@ -39,11 +39,6 @@ pip3 install nltk
 * To install Recipe Scrapers:
 ```
 pip3 install recipe-scrapers
-```
-
-* To install Ingredient Parser (Zestful Client):
-```
-pip3 install zestful-parse-ingredient
 ```
 
 * To install number-parser:
@@ -82,9 +77,8 @@ Additionally, this project depends on several external APIs for its advanced fun
 * [Spoonacular API](https://spoonacular.com/food-api/)
     * **Purpose:** For querying substitute ingredient matches.
     * **Rate:** 50 request / day.
-* [Parseology](https://rapidapi.com/parseology/api/ingredient-parser2)
-    * **Purpose:** For parsing quantities and units from ingredients.
-    * **Rate:** $0.015 / request.
+
+For anyone viewing this repository after March 20, 2023, you will need to provide your own API keys for the above services to run **CH3FB0T**.
 
 ## Executing the system
 
