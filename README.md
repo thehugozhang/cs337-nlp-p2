@@ -145,6 +145,11 @@ source ./venv/bin/activate
 kill -9 $(lsof -ti:5055)
 ```
 
+* OSError: [Errno 48] error while attempting to bind on address ('0.0.0.0', 5005): address already in use
+```
+kill -9 $(lsof -ti:5005)
+```
+
 ## Help
 
 For any additional troubleshooting assistance, please reach out to [hugozhang2023@u.northwestern.edu](mailto:hugozhang2023@u.northwestern.edu).

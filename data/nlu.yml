@@ -238,6 +238,54 @@ nlu:
     - how long do I need to [grill](how_long_query) for
     - how long do i [bake](how_long_query) for
 
+- intent: transform_to_vegetarian
+  examples: |
+    - transform this recipe to vegetarian
+    - transform to vegetarian
+    - make this recipe vegetarian
+
+- intent: transform_from_vegetarian
+  examples: |
+    - transform this recipe from vegetarian
+    - transform from vegetarian
+    - make this recipe not vegetarian
+    - make this recipe non-vegetarian
+    - non vegetarian
+
+- intent: transform_to_healthy
+  examples: |
+    - transform this recipe to healthy
+    - transform to healthy
+    - make this recipe healthy
+
+- intent: transform_from_healthy
+  examples: |
+    - transform this recipe from healthy to unhealthy
+    - transform to unhealthy
+    - make this recipe unhealthy
+
+- intent: transform_to_south_asian
+  examples: |
+    - transform this recipe to south asian cuisine
+    - transform to south asian cuisine
+    - make this recipe south asian
+    - change this recipe cuisine to south asian
+  
+- intent: transform_half_serving
+  examples: |
+    - halve this recipe serving size
+    - halve recipe
+    - halve this recipe
+    - cut this recipe in half
+    - transform this recipe to half
+
+- intent: transform_double_serving
+  examples: |
+    - double this recipe serving size
+    - double this recipe
+    - transform recipe to double
+    - double recipe
+
 - intent: bot_challenge
   examples: |
     - are you a bot?

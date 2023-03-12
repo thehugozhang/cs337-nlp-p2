@@ -66,3 +66,38 @@ rules:
   steps:
   - intent: how_long
   - action: action_how_long
+
+- rule: Transform the recipe to vegetarian
+  steps:
+  - intent: transform_to_vegetarian
+  - action: action_transform_to_vegetarian
+
+- rule: Transform the recipe from vegetarian
+  steps:
+  - intent: transform_from_vegetarian
+  - action: action_transform_from_vegetarian
+
+- rule: Transform the recipe to healthy
+  steps:
+  - intent: transform_to_healthy
+  - action: action_transform_to_healthy
+
+- rule: Transform the recipe to unhealthy
+  steps:
+  - intent: transform_from_healthy
+  - action: action_transform_from_healthy
+
+- rule: Transform the recipe to South Asian
+  steps:
+  - intent: transform_to_south_asian
+  - action: action_transform_to_south_asian
+
+- rule: Transform the recipe to half serving size
+  steps:
+  - intent: transform_half_serving
+  - action: action_transform_half_serving
+
+- rule: Transform the recipe to double serving size
+  steps:
+  - intent: transform_double_serving
+  - action: action_transform_double_serving

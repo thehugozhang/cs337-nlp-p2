@@ -18,6 +18,13 @@ intents:
   - substitute
   - how_much
   - how_long
+  - transform_to_vegetarian
+  - transform_from_vegetarian
+  - transform_to_healthy
+  - transform_from_healthy
+  - transform_to_south_asian
+  - transform_double_serving
+  - transform_half_serving
 
 entities:
   - recipe_url
@@ -119,6 +126,13 @@ actions:
   - action_substitute
   - action_how_much
   - action_how_long
+  - action_transform_to_vegetarian
+  - action_transform_from_vegetarian
+  - action_transform_to_healthy
+  - action_transform_from_healthy
+  - action_transform_to_south_asian
+  - action_transform_double_serving
+  - action_transform_half_serving
 
 responses:
   utter_greet:

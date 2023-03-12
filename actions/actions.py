@@ -342,7 +342,7 @@ class ActionHowLong(Action):
         return [SlotSet("how_long_query", None)]
 
 ###############################################################
-# Ingredient substitute utterances.
+# Individual ingredient substitute utterances.
 ###############################################################
 
 class ActionSubstitute(Action):
@@ -370,3 +370,98 @@ class ActionSubstitute(Action):
                 dispatcher.utter_message(text="Hmm, I was unable to find any suitable substitutes for {}.".format(substitute_query))
 
         return [SlotSet("substitute_query", None)]
+
+###############################################################
+# Recipe transformation utterances.
+###############################################################
+
+class ActionToVegetarian(Action):
+
+    def name(self) -> Text:
+        return "action_transform_to_vegetarian"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Implement to vegetarian.")
+        
+        return []
+
+class ActionFromVegetarian(Action):
+
+    def name(self) -> Text:
+        return "action_transform_from_vegetarian"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Implement from vegetarian.")
+        
+        return []
+
+class ActionToHealthy(Action):
+
+    def name(self) -> Text:
+        return "action_transform_to_healthy"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Implement to healthy.")
+        
+        return []
+        
+class ActionFromHealthy(Action):
+
+    def name(self) -> Text:
+        return "action_transform_from_healthy"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Implement from healthy.")
+        
+        return []
+        
+class ActionToSouthAsian(Action):
+
+    def name(self) -> Text:
+        return "action_transform_to_south_asian"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Implement to South Asian.")
+        
+        return []
+        
+class ActionHalfServing(Action):
+
+    def name(self) -> Text:
+        return "action_transform_half_serving"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Implement to half serving.")
+        
+        return []
+        
+class ActionDoubleServing(Action):
+
+    def name(self) -> Text:
+        return "action_transform_double_serving"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        dispatcher.utter_message(text="Implement to double serving.")
+        
+        return []
