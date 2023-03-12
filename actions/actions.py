@@ -4,8 +4,10 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
 
-# Relative import of custom recipe parsing functions.
+# Relative import of custom recipe parsing/transforming functions.
 from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary, substitute_ingredient, get_vague_how_to, get_duration
+from .transform import transform_recipe
+from .lexicon import meat_substitutions, unhealthy_substitutions
 
 ###############################################################
 # Recipe parsing / slot memory utterance.
@@ -34,6 +36,7 @@ class ActionParseRecipe(Action):
             recipe_steps = len(recipe_json["instructions_list"])
             recipe_steps_list = recipe_json["instructions_list"]
             recipe_ingredients = recipe_json["ingredients"]
+            recipe_prep_time = recipe_json["prep_time"]
 
             dispatcher.utter_message("Great, let's cook {} which has {} steps! What would you like to know?".format(recipe_name, recipe_steps))
 
@@ -44,6 +47,7 @@ class ActionParseRecipe(Action):
                 SlotSet("recipe_steps_list", recipe_steps_list),
                 SlotSet("recipe_current_step", 0),
                 SlotSet("recipe_ingredients_list", recipe_ingredients),
+                SlotSet("recipe_prep_time", recipe_prep_time),
             ]
 
 ###############################################################
@@ -383,9 +387,21 @@ class ActionToVegetarian(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        dispatcher.utter_message(text="Implement to vegetarian.")
         
+        # Retrieve values from slots.
+        recipe_prep_time = tracker.get_slot('recipe_prep_time')
+        recipe_ingredients_list = tracker.get_slot('recipe_ingredients_list')
+        recipe_steps_list = tracker.get_slot('recipe_steps_list')
+
+        # Transform recipe and retrieve updated values.
+        updated_recipe_prep_time, updated_recipe_ingredients_list, updated_recipe_steps_list, = transform_recipe(meat_substitutions, recipe_prep_time, recipe_ingredients_list, recipe_steps_list)
+
+        ingredients_text = "Of course! Here is the vegetarian version of the recipe ingredient list:\n\n"
+        for index, ingredient in enumerate(updated_recipe_ingredients_list):
+            ingredients_text += (str(index + 1)) + ". " + ingredient + "\n"
+        ingredients_text += "\nHope this helps!"
+
+        dispatcher.utter_message(text=ingredients_text)
         return []
 
 class ActionFromVegetarian(Action):

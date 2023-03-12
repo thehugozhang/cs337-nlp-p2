@@ -77,6 +77,12 @@ slots:
     mappings:
     - type: custom
 
+  recipe_prep_time:
+    type: float
+    initial_value: 0
+    mappings:
+    - type: custom
+
   nth_utterance:
     type: any
     mappings:

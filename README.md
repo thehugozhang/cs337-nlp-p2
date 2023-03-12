@@ -22,6 +22,7 @@ This system depends on the following third-party modules.
 * [Recipe Scrapers](https://pypi.org/project/recipe-scrapers/)
 * [NLTK](https://www.nltk.org/install.html)
 * [number-parser](https://github.com/scrapinghub/number-parser)
+* [Ingredient Parser](https://ingredient-parser.readthedocs.io/en/latest/)
 
 ### Installing
 
@@ -45,6 +46,11 @@ pip3 install recipe-scrapers
 * To install number-parser:
 ```
 pip3 install number-parser
+```
+
+* To install Ingredient Parser:
+```
+python -m pip install ingredient-parser-nlp
 ```
 
 ### Installation debugging

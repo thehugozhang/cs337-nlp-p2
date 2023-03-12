@@ -14,3 +14,4 @@ stories:
     - recipe_steps_list: ["example list of steps"]
     - recipe_current_step: 0
     - recipe_ingredients_list: ["example list of ingredients"]
+    - recipe_prep_time: 30
