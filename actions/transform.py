@@ -28,16 +28,15 @@ def construct_substitute_ingredient(previous, substitutee_product, substitute_di
         previous["unit"] = substitute_unit
 
     # Update original ingredient dictionary using substitute values.
-    if substitute_sentence is not None:
-        previous["sentence"] = previous["quantity"] + substitute_sentence
     if substitute_comment is not None:
         previous["comment"] = substitute_comment
+    if substitute_sentence is not None:
+        previous["sentence"] = previous["quantity"] + substitute_sentence
     else:
         previous["sentence"] = previous["sentence"].lower().replace(substitutee_product, substitute_type).capitalize()
 
     # Add additional prep time to recipe.
     shallow_recipe_time += substitute_added_time
-
 
     # Add additional steps to recipe.
     shallow_recipe_steps = substitute_added_steps + shallow_recipe_steps
@@ -67,6 +66,7 @@ def transform_recipe(substitutes_lexicon, recipe_time, recipe_ingredients, recip
     updated_recipe_parsed_ingredients = sorted(original_recipe_parsed_ingredients.copy(), key=lambda d: d['name'])
     updated_recipe_instructions = original_recipe_instructions.copy()
 
+    print(original_recipe_parsed_ingredients)
     for ingredient_dict in original_recipe_parsed_ingredients:
         for substitutee, substitute_dict in substitutes_lexicon.items():
             if substitutee in ingredient_dict["name"].lower():
