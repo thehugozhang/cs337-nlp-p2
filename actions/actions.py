@@ -6,7 +6,7 @@ from rasa_sdk.executor import CollectingDispatcher
 
 # Relative import of custom recipe parsing/transforming functions.
 from .recipe import parse_recipe, parse_ingredients, alnum_parse_ordinal, retrieve_youtube_video, what_is_wiki_summary, substitute_ingredient, get_vague_how_to, get_duration
-from .transform import transform_recipe
+from .transform import transform_recipe, halve_ingredients, double_ingredients
 from .lexicon import meat_substitutions, vegetable_substitutions, unhealthy_substitutions, healthy_substitutions, south_asian_substitutions
 
 ###############################################################
@@ -345,6 +345,23 @@ class ActionHowLong(Action):
             
         return [SlotSet("how_long_query", None)]
 
+class ActionPrepTime(Action):
+
+    def name(self) -> Text:
+        return "action_prep_time"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        # Retrieve values from slots.
+        recipe_prep_time = tracker.get_slot('recipe_prep_time')
+        recipe_prep_time_hours = "{:.2f}".format((float(recipe_prep_time) / 60))
+
+        dispatcher.utter_message(text="The total prep time for this recipe is {} minutes or {} hours!".format(str(recipe_prep_time), recipe_prep_time_hours))
+
+        return []
+
 ###############################################################
 # Individual ingredient substitute utterances.
 ###############################################################
@@ -538,7 +555,16 @@ class ActionHalfServing(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Implement to half serving.")
+        # Retrieve values from slots.
+        recipe_ingredients_list = tracker.get_slot('recipe_ingredients_list')
+        updated_recipe_ingredients_list = halve_ingredients(recipe_ingredients_list)
+
+        ingredients_text = "Of course! Here is the ingredient list for half the total serving size of this recipe:\n\n"
+        for index, ingredient in enumerate(updated_recipe_ingredients_list):
+            ingredients_text += (str(index + 1)) + ". " + ingredient + "\n"
+        ingredients_text += "\nPlease be aware that halving the ingredient proportions may result in a faster cooking time. Hope this helps!"
+
+        dispatcher.utter_message(text=ingredients_text)
         
         return []
         
@@ -551,6 +577,15 @@ class ActionDoubleServing(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        dispatcher.utter_message(text="Implement to double serving.")
+        # Retrieve values from slots.
+        recipe_ingredients_list = tracker.get_slot('recipe_ingredients_list')
+        updated_recipe_ingredients_list = double_ingredients(recipe_ingredients_list)
+
+        ingredients_text = "Of course! Here is the ingredient list for twice the total serving size of this recipe:\n\n"
+        for index, ingredient in enumerate(updated_recipe_ingredients_list):
+            ingredients_text += (str(index + 1)) + ". " + ingredient + "\n"
+        ingredients_text += "\nPlease be aware that doubling the ingredient proportions may require a longer cooking time. Hope this helps!"
+
+        dispatcher.utter_message(text=ingredients_text)
         
         return []

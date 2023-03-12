@@ -23,7 +23,8 @@ def construct_substitute_ingredient(previous, substitutee_product, substitute_di
     previous["name"] = previous["name"].lower().replace(substitutee_product, substitute_type)
 
     # Adjust original ingredient quantity using substitute ratio and unit.
-    previous["quantity"] = "{:.2f}".format((float(previous["quantity"]) * substitute_ratio))
+    if previous["quantity"]:
+        previous["quantity"] = "{:.2f}".format((float(previous["quantity"]) * substitute_ratio))
     if substitute_unit is not None:
         previous["unit"] = substitute_unit
 
@@ -66,7 +67,6 @@ def transform_recipe(substitutes_lexicon, recipe_time, recipe_ingredients, recip
     updated_recipe_parsed_ingredients = sorted(original_recipe_parsed_ingredients.copy(), key=lambda d: d['name'])
     updated_recipe_instructions = original_recipe_instructions.copy()
 
-    print(original_recipe_parsed_ingredients)
     for ingredient_dict in original_recipe_parsed_ingredients:
         for substitutee, substitute_dict in substitutes_lexicon.items():
             if substitutee in ingredient_dict["name"].lower():
@@ -83,3 +83,41 @@ def transform_recipe(substitutes_lexicon, recipe_time, recipe_ingredients, recip
 
     return updated_recipe_prep_time, gather_sentences(updated_recipe_parsed_ingredients), updated_recipe_instructions
 
+def halve_ingredients(recipe_ingredients):
+    original_recipe_parsed_ingredients = parse_multiple_ingredients(recipe_ingredients)
+    halved_ingredient_list = []
+
+    for ingredient_dict in original_recipe_parsed_ingredients:
+        if ingredient_dict["quantity"]:
+            ingredient_dict["quantity"] = "{:.3f}".format((float(ingredient_dict["quantity"]) / 2))
+        ingredient_string = ingredient_dict["quantity"] + " " + ingredient_dict["unit"] + " " + ingredient_dict["name"]
+        if ingredient_dict["comment"]:
+            ingredient_string = ingredient_string + ","
+            if isinstance(ingredient_dict["comment"], list):
+                for comment in ingredient_dict["comment"]:
+                    ingredient_string = ingredient_string + " " + comment
+            else:
+                ingredient_string = ingredient_string + " " + ingredient_dict["comment"]
+        halved_ingredient_list.append(ingredient_string)
+
+    return halved_ingredient_list
+
+def double_ingredients(recipe_ingredients):
+    original_recipe_parsed_ingredients = parse_multiple_ingredients(recipe_ingredients)
+    doubled_ingredient_list = []
+
+    for ingredient_dict in original_recipe_parsed_ingredients:
+        if ingredient_dict["quantity"]:
+            ingredient_dict["quantity"] = "{:.2f}".format((float(ingredient_dict["quantity"]) * 2))
+        ingredient_string = ingredient_dict["quantity"] + " " + ingredient_dict["unit"] + " " + ingredient_dict["name"]
+        if ingredient_dict["comment"]:
+            print("test", ingredient_dict["comment"])
+            ingredient_string = ingredient_string + ","
+            if isinstance(ingredient_dict["comment"], list):
+                for comment in ingredient_dict["comment"]:
+                    ingredient_string = ingredient_string + " " + comment
+            else:
+                ingredient_string = ingredient_string + " " + ingredient_dict["comment"]
+        doubled_ingredient_list.append(ingredient_string)
+
+    return doubled_ingredient_list

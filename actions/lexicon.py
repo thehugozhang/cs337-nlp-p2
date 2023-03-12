@@ -10,7 +10,7 @@ meat_substitutions = {
     "chicken stock": { "substitution": "vegetable stock", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "chicken broth": { "substitution": "vegetable broth", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "chicken breast": { "substitution": "seitan slice", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
-    "chicken thigh": { "substitution": "seitan slice", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "chicken thigh": { "substitution": "seitan slice", "ratio": 1.0, "unit": None, "sentence": " Seitan slices, 1 inch thick", "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "chicken wing": { "substitution": "seitan slice", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "chicken leg": { "substitution": "seitan slice", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "chicken": { "substitution": "seitan", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
@@ -33,7 +33,7 @@ meat_substitutions = {
 }
 
 vegetable_substitutions = {
-    "tofu": { "substitution": "shrimp", "ratio": 1.0, "unit": None, "sentence": None, "12 shrimp, shelled and deveined": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "tofu": { "substitution": "shrimp", "ratio": 12.0, "unit": None, "sentence": " shrimp, shelled and deveined", "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "seitan": { "substitution": "chicken", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "bean patties": { "substitution": "beef patties", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "black beans": { "substitution": "ground beef", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },

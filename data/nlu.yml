@@ -286,6 +286,14 @@ nlu:
     - transform recipe to double
     - double recipe
 
+- intent: prep_time
+  examples: |
+    - what is the total prep time
+    - total prep time
+    - show prep time
+    - what is the total time
+    - how long will this recipe take
+
 - intent: bot_challenge
   examples: |
     - are you a bot?

@@ -25,6 +25,7 @@ intents:
   - transform_to_south_asian
   - transform_double_serving
   - transform_half_serving
+  - prep_time
 
 entities:
   - recipe_url
@@ -139,6 +140,7 @@ actions:
   - action_transform_to_south_asian
   - action_transform_double_serving
   - action_transform_half_serving
+  - action_prep_time
 
 responses:
   utter_greet:

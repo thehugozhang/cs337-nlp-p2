@@ -101,3 +101,8 @@ rules:
   steps:
   - intent: transform_double_serving
   - action: action_transform_double_serving
+
+- rule: Answer how long the total prep time is
+  steps:
+  - intent: prep_time
+  - action: action_prep_time
