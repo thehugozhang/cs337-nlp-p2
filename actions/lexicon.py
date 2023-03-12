@@ -1,11 +1,10 @@
-vegetarian_transformation = {
-
-}
-
 meat_substitutions = {
     "beef stock": { "substitution": "vegetable stock", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "beef broth": { "substitution": "vegetable broth", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "ground beef": { "substitution": "brown lentils", "ratio": 1.0, "unit": "cup", "sentence": " cup(s) of dried, uncooked brown lentils", "comment": "dried, uncooked", "additions": { "prep_time": 15, "ingredients": ["3 cups water"], "steps": ["Place the lentils and water in a large saucepan.", "Bring to a rapid simmer, then reduce the heat and simmer for about 15 minutes until the lentils are tender but still hold their shape. Drain any excess liquid and set aside for later use."] }},
+    "new york strip steak": { "substitution": "cauliflower steak", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "new york strip": { "substitution": "cauliflower steak", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "steak": { "substitution": "cauliflower steak", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "beef patties": { "substitution": "bean patties", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "beef": { "substitution": "tempeh", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "chicken stock": { "substitution": "vegetable stock", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
@@ -15,6 +14,8 @@ meat_substitutions = {
     "chicken wing": { "substitution": "seitan slice", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "chicken leg": { "substitution": "seitan slice", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "chicken": { "substitution": "seitan", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "pork chop": { "substitution": "cauliflower steak", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "pork belly": { "substitution": "chanterelles mushrooms", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "pork bones": { "substitution": "vegetable scraps", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "pork": { "substitution": "jackfruit", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "lamb": { "substitution": "eggplant", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
@@ -27,15 +28,21 @@ meat_substitutions = {
     "crab": { "substitution": "vegan crab", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "shrimp": { "substitution": "vegan shrimp", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "fish": { "substitution": "vegan fish", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "anchovies": { "substitution": "vegan fish", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "worcestershire sauce": { "substitution": "vegetarian worcestershire sauce", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
 }
 
 vegetable_substitutions = {
-    "": { "substitution": "", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
-}
-
-healthy_substitutions = {
-
-
+    "tofu": { "substitution": "shrimp", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "seitan": { "substitution": "chicken", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "bean patties": { "substitution": "beef patties", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "black beans": { "substitution": "ground beef", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "brown lentils": { "substitution": "ground beef", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "soy burger-style crumbles": { "substitution": "ground beef", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "tempeh": { "substitution": "beef", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "tofurky": { "substitution": "turkey", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "vegetarian ": { "substitution": "", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "vegan ": { "substitution": "", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
 }
 
 unhealthy_substitutions = {
@@ -64,19 +71,74 @@ unhealthy_substitutions = {
     "bread crumbs": { "substitution": "crushed nuts", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 5, "ingredients": [], "steps": []} },
     "panko bread crumbs": { "substitution": "crushed nuts", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 5, "ingredients": [], "steps": []} },
     "sour cream": { "substitution": "greek yogurt", "ratio": 1.0, "unit": None, "sentence": None, "comment": "plain", "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
-    "mayonnaise": { "substitution": "greek yofurt", "ratio": 1.0, "unit": None, "sentence": None, "comment": "plain", "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "mayonnaise": { "substitution": "greek yogurt", "ratio": 1.0, "unit": None, "sentence": None, "comment": "plain", "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "cream cheese": { "substitution": "cottage cheese", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "heavy cream": { "substitution": "coconut cream", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "ground beef": { "substitution": "ground turkey", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "beef stock": { "substitution": "vegetable stock", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "beef broth": { "substitution": "vegetable broth", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
-    "beef chuck": { "substitution": "turkey thigh", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "beef chuck roast": { "substitution": "turkey thigh", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "beef chuck": { "substitution": "turkey thigh", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "beef": { "substitution": "turkey", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "ground pork": { "substitution": "ground turkey", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "pork sausage": { "substitution": "turkey sausage", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "pork": { "substitution": "turkey", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
     "bacon": { "substitution": "turkey bacon", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "whole milk": { "substitution": "skim milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+}
+
+healthy_substitutions = {
+    "coconut oil": { "substitution": "butter", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "olive oil": { "substitution": "canola oil", "ratio": 1.0, "unit": None, "sentence": None, "comment": "extra virgin", "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "brown rice": { "substitution": "white rice", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "whole wheat flour": { "substitution": "all-purpose white flour", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "chickpea flour": { "substitution": "all-purpose white flour", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "buckwheat flour": { "substitution": "all-purpose white flour", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "oat flour": { "substitution": "all-purpose white flour", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "corn flour": { "substitution": "all-purpose white flour", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "rice flour": { "substitution": "all-purpose white flour", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "whole wheat bread": { "substitution": "white bread", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "multigrain bread": { "substitution": "white bread", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "honey": { "substitution": "high fructose corn syrup", "ratio": 0.5, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "maple syrup": { "substitution": "high fructose corn syrup", "ratio": 0.5, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "agave": { "substitution": "high fructose corn syrup", "ratio": 0.5, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "coconut sugar": { "substitution": "brown sugar", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "monk fruit sweetener": { "substitution": "white sugar", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "monkfruit sweetener": { "substitution": "white sugar", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "monk fruit extract": { "substitution": "white sugar", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "monkfruit extract": { "substitution": "white sugar", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "monk fruit": { "substitution": "white sugar", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "monkfruit": { "substitution": "white sugar", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "stevia": { "substitution": "white sugar", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "lowfat milk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "skim milk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "2% milk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "soymilk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "oatmilk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "almondmilk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "cashewmilk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "soy milk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "oat milk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "almond milk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "cashew milk": { "substitution": "whole milk", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "avocado": { "substitution": "mayonnaise", "ratio": 1.0, "unit": None, "sentence": None, "comment": "plain", "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "cottage cheese": { "substitution": "cream cheese", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "coconut cream": { "substitution": "heavy cream", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "vegetable stock": { "substitution": "beef stock", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "vegetable broth": { "substitution": "beef broth", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "turkey thigh": { "substitution": "beef chuck", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "ground turkey": { "substitution": "ground pork", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "turkey sausage": { "substitution": "pork sausage", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "turkey": { "substitution": "pork", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "turkey bacon": { "substitution": "bacon", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "salmon steak": { "substitution": "pork chop", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "salmon": { "substitution": "pork", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "soy sauce": { "substitution": "worcestershire sauce", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+    "reduced-sodium soy sauce": { "substitution": "soy sauce", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
+}
+
+south_asian_substitutions = {
+
 }
 
 # "": { "substitution": "", "ratio": 1.0, "unit": None, "sentence": None, "comment": None, "additions": { "prep_time": 0, "ingredients": [], "steps": []} },
