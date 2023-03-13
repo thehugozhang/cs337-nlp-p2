@@ -6,10 +6,13 @@ Developed for COMP_SCI 337 Natural Language Processing at [Northwestern Universi
 
 Meet <span style="color:#4E2A84">**CH3FB0T**</span>! This project is a contexual assistant chatbot that can interpret any online recipe URL and promptly respond to queries about it.
 
-Click the thumbnail below to watch the Youtube demonstration.
+Click the thumbnails below to watch the Youtube demonstrations.
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=dQDzthvpEE4" target="_blank"><img src="http://img.youtube.com/vi/dQDzthvpEE4/0.jpg" 
-alt="Youtube Demonstration" width="240" height="180" border="10" /></a>
+alt="Youtube Demonstration Part 1" width="240" height="180" border="10" /></a>
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=bIXci0jNfiw" target="_blank"><img src="http://img.youtube.com/vi/bIXci0jNfiw/0.jpg" 
+alt="Youtube Demonstration Part 2" width="240" height="180" border="10" /></a>
 
 ## Getting Started
 
